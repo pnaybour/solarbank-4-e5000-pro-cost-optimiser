@@ -1,0 +1,163 @@
+{
+ "commit": "21c94833993cc14dbb03fd1a945106f7b1afaafe",
+ "files": {
+  "LICENSE": {
+   "bytes": 1074,
+   "git_blob_sha1": "2cbf513f5d32afce14f37524d0a28a0df35be90e",
+   "sha256": "ccdcbb3f8edbed79737556b0cb5ae75043c2a7abf9dcfcac738fb5538f734d4a"
+  },
+  "README.md": {
+   "bytes": 10920,
+   "git_blob_sha1": "3e07ed75fd6b55b959cda7785bf08ef07128c340",
+   "sha256": "49c3b7ca8c79d838d36c7c02ad29435da6975926437a91bb2785063f6fc40355"
+  },
+  "custom_components/anker_solix_official/__init__.py": {
+   "bytes": 2668,
+   "git_blob_sha1": "384d03e6716e9ad943c09fce158ad5fbb23e4534",
+   "sha256": "5a941f496d269861050164780563eb928b0896a5ce361ae14ccf8e75b7c67df1"
+  },
+  "custom_components/anker_solix_official/base_entity.py": {
+   "bytes": 14670,
+   "git_blob_sha1": "8bfb07f26c7c14e524b5b4e1fdd9699fcbd94368",
+   "sha256": "147e8cae5b267852ac3364a6c26302cea5cfbbaf5914475210df5363ceae7a94"
+  },
+  "custom_components/anker_solix_official/batch_reader.py": {
+   "bytes": 5342,
+   "git_blob_sha1": "da55eb54ac39b36d84c84992cc217fcb84062dbf",
+   "sha256": "4a13ba831c48b13b9e451488abf24ee2e1e9d6f688ec514b5357d48e25bf05b0"
+  },
+  "custom_components/anker_solix_official/config_utils.py": {
+   "bytes": 5933,
+   "git_blob_sha1": "cc479d59fe6e0a8a72a346c950a60266ab9becac",
+   "sha256": "26eaf2991d67883d14e40d21047e98186d18739acd3a6c9a1c46ac7450a09594"
+  },
+  "custom_components/anker_solix_official/const.py": {
+   "bytes": 736,
+   "git_blob_sha1": "e28455b18745c0e8152da468018735f3d1cf4c47",
+   "sha256": "cc6a74030ffaa2e89c6dd3db8d87631a4e911b942ad67a6aaa6037b44fce5411"
+  },
+  "custom_components/anker_solix_official/coordinator.py": {
+   "bytes": 38594,
+   "git_blob_sha1": "52990519b25ebf8d7b77b9ae371f7aff33034f77",
+   "sha256": "aa69d1a1f086a6cd7e226b83828f1772b9a0275693ad57b239cb6466c0a1ede7"
+  },
+  "custom_components/anker_solix_official/device_config.py": {
+   "bytes": 1944,
+   "git_blob_sha1": "fd28b32fa31a359990915654bda18d6edd2a440d",
+   "sha256": "62b8df1b9d573838bf0765ebb4bf675cb064c2e1a61bded32df176bcaf207e97"
+  },
+  "custom_components/anker_solix_official/manifest.json": {
+   "bytes": 583,
+   "git_blob_sha1": "cd1cec82273bf14a55054ad4f4bf633e37f98ab4",
+   "sha256": "9c2c9c30bae87d0996b529ff01affc62ea14e53b9b34ffe261447f52998b4ed3"
+  },
+  "custom_components/anker_solix_official/mdns_helper.py": {
+   "bytes": 2737,
+   "git_blob_sha1": "9a6554bc3d52b223ed3051d6e7fbccdcdb050756",
+   "sha256": "9f9ae998ddebaa23f259c983f934a7467d8bb17438390deb6c31f0e3a5a7697d"
+  },
+  "custom_components/anker_solix_official/modbus_client.py": {
+   "bytes": 60932,
+   "git_blob_sha1": "5bfe635dcb827fa4222f6c6e51f6426549f69c5a",
+   "sha256": "afda91b2d5d1ea0d9bb1cb79b4abe5affd782c6a5e6588e6b19ffa60f9713883"
+  },
+  "custom_components/anker_solix_official/modbus_manager.py": {
+   "bytes": 19468,
+   "git_blob_sha1": "1671b96f87c8117b63f0a5ab8f47d97d4278b0ce",
+   "sha256": "652af65550814b441b3347053ca51f8870ef8c6540da0c2d8525ef3448788285"
+  },
+  "custom_components/anker_solix_official/number.py": {
+   "bytes": 37685,
+   "git_blob_sha1": "43602fd6be5d11b24c1a4a06118142777f424979",
+   "sha256": "61a17afe4f28eaac5c0b297e6eb80c80cdc2a07ba8268667f25339da786242b4"
+  },
+  "custom_components/anker_solix_official/product_mapping.py": {
+   "bytes": 3029,
+   "git_blob_sha1": "120ecb7ab4c53150d7364180ad12a9c9e2f0891e",
+   "sha256": "be628fd543bba43424a7654ace52e89b93e345086189b4f31441877166c80aca"
+  },
+  "custom_components/anker_solix_official/select.py": {
+   "bytes": 18494,
+   "git_blob_sha1": "1e53f9386d9004a2bc692c53e103198ff69ecf9c",
+   "sha256": "db3e31cc050a46eeac9b468d98f11e0b68ab431943b9a679ea5ee9a56f094834"
+  },
+  "custom_components/anker_solix_official/strings.json": {
+   "bytes": 10152,
+   "git_blob_sha1": "4f1a3304ad39660b9dbfcbc91290c0cdf7aa3fc4",
+   "sha256": "8009f820050212ac42d02e960a4a17802152c5e9ece6f86260b6ae2d989b800d"
+  },
+  "custom_components/anker_solix_official/switch.py": {
+   "bytes": 9798,
+   "git_blob_sha1": "9873b3be8c6b9c284f1e52f8c7522ddbe8aecf01",
+   "sha256": "e93d6691b83ac540b3450ff38eab9ecbb263752f837179cdedeecf31c84adab2"
+  },
+  "custom_components/anker_solix_official/translations/en.json": {
+   "bytes": 11571,
+   "git_blob_sha1": "a9a77be6f71984ee32a66aad6c860f97af00724f",
+   "sha256": "13600c698c247298b28fb08306498efca6cd832aeb51f1ace1bd27255ad967c9"
+  },
+  "tests/test_batch_reader.py": {
+   "bytes": 7164,
+   "git_blob_sha1": "76a5eb1cd2970d4f7b494bb43ac37b12e8c07477",
+   "sha256": "356a635185e9c3c78e24e8495381a55140be6731b89ddb8d14dc766ddf092547"
+  },
+  "tests/test_config_utils.py": {
+   "bytes": 14127,
+   "git_blob_sha1": "90002e28d2f2dba4e2655b64af4cda39b21906b3",
+   "sha256": "20caa558d7e67af80518695c70902e176b6c2e2eb1aa757efac7635d18e061a9"
+  },
+  "tests/test_modbus_client.py": {
+   "bytes": 44534,
+   "git_blob_sha1": "9fdaae92381f093cacf3066468013a8d225b1c4e",
+   "sha256": "d12026086c4146a79b1384d99566e21491d8b02e65887a8d23341ae1bf55bb80"
+  },
+  "tests/test_number.py": {
+   "bytes": 31190,
+   "git_blob_sha1": "79b4756db565400264617264c327b2414239189d",
+   "sha256": "3192c7fe7ffd901052f8181e38b5a6d41dd2102524c1802b6b295f5067843a24"
+  },
+  "tests/test_product_mapping.py": {
+   "bytes": 4510,
+   "git_blob_sha1": "7dd2b576e5f938f0cc92841c705b1483c58bca4c",
+   "sha256": "cd764e0bdafa88305c8966364049c08eee53c98ed1fac177fb8c7be490d44234"
+  },
+  "tests/test_select.py": {
+   "bytes": 14195,
+   "git_blob_sha1": "1dbeb85b3fcba008187f5b699b3dd7153b492296",
+   "sha256": "3a0db646c11f026b93e919d82e1a1afd39e37ba2b872cd246bcc2ecfa588f61f"
+  },
+  "tests/test_switch.py": {
+   "bytes": 8995,
+   "git_blob_sha1": "574a4d471a82738ab23d3b9eedcabb16bd39e2b7",
+   "sha256": "bcefc11462df4844489a39c93ac07b773473d51a07080b829c14d22844750186"
+  }
+ },
+ "licence": "MIT, Copyright (c) 2026 Anker Innovations (LICENSE in this folder)",
+ "not_copied": [
+  "custom_components/anker_solix_official/config_flow.py",
+  "custom_components/anker_solix_official/device_logger.py",
+  "custom_components/anker_solix_official/diagnostics.py",
+  "custom_components/anker_solix_official/sensor.py",
+  "custom_components/anker_solix_official/throttled_logger.py"
+ ],
+ "note": "Byte-for-byte copies of the vendor's files for reference and diffing. They need Home Assistant to run and are never imported. Adapted functions live in src/solarbank_optimiser/devices/anker_vendor.py; see ANKER_INTEGRATION_NOTES.md.",
+ "other_device_maps": [
+  "custom_components/anker_solix_official/config/3c176e100f3c1d7a36ef64571e6aacd16b539f3657c11745f7bd969ccaf8b213.yaml",
+  "custom_components/anker_solix_official/config/482b2e95c3aaf78b871f463a71ba7f4fc87f9181872ac6168a90ad198fa3853a.yaml",
+  "custom_components/anker_solix_official/config/575f793986f8d2a7c714eab09c021064533d656b4c56bd9e8c72824e351d3bce.yaml",
+  "custom_components/anker_solix_official/config/8fcbb87c685781b1d70d784a79eb923098955df2aaf199095ce7767bb70b913d.yaml"
+ ],
+ "pinned_config_files": {
+  "42bcf12f6663b19b5eaa517f050b6cbf286037eed3c569a5ccae6724c19de64e.yaml": {
+   "bytes": 10374,
+   "git_blob_sha1": "107689842f5463a3c7e374fb0ff1cfade4041306",
+   "sha256": "eab98110b9ba4df7cce50a8d2c08bd9df318e04949441fbab9a8e49cbc2a4c4c"
+  },
+  "58f0132b5f7979b2cfa43a0eb1fca770053288032386ff6a4da5ed2d72d4ea35.yaml": {
+   "bytes": 13555,
+   "git_blob_sha1": "d5f3b763ab99f3051b35729c19a023fb0845a25a",
+   "sha256": "068f8ce60413c2f4db411059e1d2d34521730a0977771cd40c5dc87c5ebfb875"
+  }
+ },
+ "repository": "https://github.com/anker-charging/ha-anker-solix-official"
+}

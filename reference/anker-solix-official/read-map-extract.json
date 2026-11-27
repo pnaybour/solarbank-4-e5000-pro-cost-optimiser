@@ -1,0 +1,529 @@
+{
+ "meter": {
+  "batch_read_ranges": [
+   {
+    "end": 10647,
+    "start": 10620,
+    "type": "input"
+   },
+   {
+    "end": 10695,
+    "start": 10648,
+    "type": "input"
+   },
+   {
+    "end": 10712,
+    "start": 10696,
+    "type": "input"
+   }
+  ],
+  "product": "Anker SOLIX Smart Meter Gen 2",
+  "read_quantities": {
+   "meter_model": {
+    "address": 10620,
+    "count": 10,
+    "data_type": "STRING",
+    "gain": 1,
+    "unit": "/"
+   },
+   "meter_sn": {
+    "address": 10702,
+    "count": 10,
+    "data_type": "STRING",
+    "gain": 1,
+    "unit": "/"
+   },
+   "meter_sw_version": {
+    "address": 10696,
+    "count": 2,
+    "data_type": "VERSION",
+    "gain": 1,
+    "unit": "/"
+   },
+   "meter_type": {
+    "address": 10630,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 1,
+    "unit": "/"
+   },
+   "primary_phase_1_active_power": {
+    "address": 10638,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "primary_phase_1_current": {
+    "address": 10635,
+    "count": 1,
+    "data_type": "INT16",
+    "gain": 100,
+    "unit": "A"
+   },
+   "primary_phase_1_voltage": {
+    "address": 10632,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 10,
+    "unit": "V"
+   },
+   "primary_phase_2_active_power": {
+    "address": 10640,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "primary_phase_2_current": {
+    "address": 10636,
+    "count": 1,
+    "data_type": "INT16",
+    "gain": 100,
+    "unit": "A"
+   },
+   "primary_phase_2_voltage": {
+    "address": 10633,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 10,
+    "unit": "V"
+   },
+   "primary_phase_3_active_power": {
+    "address": 10642,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "primary_phase_3_current": {
+    "address": 10637,
+    "count": 1,
+    "data_type": "INT16",
+    "gain": 100,
+    "unit": "A"
+   },
+   "primary_phase_3_voltage": {
+    "address": 10634,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 10,
+    "unit": "V"
+   },
+   "primary_phase_a_forward_active_energy": {
+    "address": 10650,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "primary_phase_a_reverse_active_energy": {
+    "address": 10658,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "primary_phase_b_forward_active_energy": {
+    "address": 10652,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "primary_phase_b_reverse_active_energy": {
+    "address": 10660,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "primary_phase_c_forward_active_energy": {
+    "address": 10654,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "primary_phase_c_reverse_active_energy": {
+    "address": 10662,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "primary_total_active_power": {
+    "address": 10644,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "primary_total_forward_active_energy": {
+    "address": 10656,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "primary_total_power_factor": {
+    "address": 10648,
+    "count": 1,
+    "data_type": "INT16",
+    "gain": 1000,
+    "unit": "/"
+   },
+   "primary_total_reactive_power": {
+    "address": 10646,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "primary_total_reverse_active_energy": {
+    "address": 10664,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "secondary_phase_1_active_power": {
+    "address": 10669,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "secondary_phase_1_current": {
+    "address": 10666,
+    "count": 1,
+    "data_type": "INT16",
+    "gain": 100,
+    "unit": "A"
+   },
+   "secondary_phase_1_voltage": {
+    "address": 10632,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 10,
+    "unit": "V"
+   },
+   "secondary_phase_2_active_power": {
+    "address": 10671,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "secondary_phase_2_current": {
+    "address": 10667,
+    "count": 1,
+    "data_type": "INT16",
+    "gain": 100,
+    "unit": "A"
+   },
+   "secondary_phase_2_voltage": {
+    "address": 10633,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 10,
+    "unit": "V"
+   },
+   "secondary_phase_3_active_power": {
+    "address": 10673,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "secondary_phase_3_current": {
+    "address": 10668,
+    "count": 1,
+    "data_type": "INT16",
+    "gain": 100,
+    "unit": "A"
+   },
+   "secondary_phase_3_voltage": {
+    "address": 10634,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 10,
+    "unit": "V"
+   },
+   "secondary_phase_a_forward_active_energy": {
+    "address": 10680,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "secondary_phase_a_reverse_active_energy": {
+    "address": 10688,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "secondary_phase_b_forward_active_energy": {
+    "address": 10682,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "secondary_phase_b_reverse_active_energy": {
+    "address": 10690,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "secondary_phase_c_forward_active_energy": {
+    "address": 10684,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "secondary_phase_c_reverse_active_energy": {
+    "address": 10692,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "secondary_total_active_power": {
+    "address": 10675,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "secondary_total_forward_active_energy": {
+    "address": 10686,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "secondary_total_power_factor": {
+    "address": 10679,
+    "count": 1,
+    "data_type": "INT16",
+    "gain": 1000,
+    "unit": "/"
+   },
+   "secondary_total_reactive_power": {
+    "address": 10677,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "secondary_total_reverse_active_energy": {
+    "address": 10694,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   }
+  }
+ },
+ "solarbank": {
+  "batch_read_ranges": [
+   {
+    "end": 10050,
+    "start": 10000,
+    "type": "input"
+   },
+   {
+    "end": 10156,
+    "start": 10090,
+    "type": "input"
+   },
+   {
+    "end": 10265,
+    "start": 10208,
+    "type": "input"
+   },
+   {
+    "end": 32774,
+    "start": 32768,
+    "type": "input"
+   },
+   {
+    "end": 10072,
+    "start": 10060,
+    "type": "holding"
+   },
+   {
+    "end": 10081,
+    "start": 10074,
+    "type": "holding"
+   },
+   {
+    "end": 60003,
+    "start": 60000,
+    "type": "holding"
+   }
+  ],
+  "product": "Anker SOLIX Solarbank 4 E5000 Pro",
+  "read_quantities": {
+   "ac_grid_output_power": {
+    "address": 10208,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "backup_soc_enable": {
+    "address": 60003,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 1,
+    "unit": "/"
+   },
+   "battery_charging_power": {
+    "address": 10008,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "battery_discharging_power": {
+    "address": 10008,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "battery_soc": {
+    "address": 10014,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 1,
+    "unit": "%"
+   },
+   "battery_status": {
+    "address": 10001,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 1,
+    "unit": "/"
+   },
+   "cumulative_charge_energy": {
+    "address": 10262,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "cumulative_discharge_energy": {
+    "address": 10264,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "device_model": {
+    "address": 32768,
+    "count": 5,
+    "data_type": "STRING",
+    "gain": 1,
+    "unit": "/"
+   },
+   "device_sn": {
+    "address": 10100,
+    "count": 12,
+    "data_type": "STRING",
+    "gain": 1,
+    "unit": "/"
+   },
+   "device_sw_version": {
+    "address": 10112,
+    "count": 6,
+    "data_type": "STRING",
+    "gain": 1,
+    "unit": "/"
+   },
+   "ems_mode_mask": {
+    "address": 32774,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 1,
+    "unit": "/"
+   },
+   "grid_export_power": {
+    "address": 10012,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "grid_import_power": {
+    "address": 10012,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "load_power": {
+    "address": 10010,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "max_charge_power": {
+    "address": 10036,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "max_discharge_power": {
+    "address": 10038,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "parallel_capability_mask": {
+    "address": 32775,
+    "count": 1,
+    "data_type": "UINT16",
+    "gain": 1,
+    "register_type": "input",
+    "unit": "/"
+   },
+   "pv_power": {
+    "address": 10002,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   },
+   "pv_total_generation": {
+    "address": 10018,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "rated_energy": {
+    "address": 10250,
+    "count": 2,
+    "data_type": "UINT32",
+    "gain": 10,
+    "unit": "kWh"
+   },
+   "third_party_pv_power": {
+    "address": 10004,
+    "count": 2,
+    "data_type": "INT32",
+    "gain": 1,
+    "unit": "W"
+   }
+  }
+ }
+}

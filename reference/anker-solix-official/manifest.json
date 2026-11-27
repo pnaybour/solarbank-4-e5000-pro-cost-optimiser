@@ -1,0 +1,18 @@
+{
+ "repository": "https://github.com/anker-charging/ha-anker-solix-official",
+ "licence": "MIT, Copyright (c) 2026 Anker Innovations",
+ "commit": "21c94833993cc14dbb03fd1a945106f7b1afaafe",
+ "fetched_utc": "2026-10-26T10:46:35+00:00",
+ "licence_sha256": "ccdcbb3f8edbed79737556b0cb5ae75043c2a7abf9dcfcac738fb5538f734d4a",
+ "maps": {
+  "solarbank": {
+   "file": "58f0132b5f7979b2cfa43a0eb1fca770053288032386ff6a4da5ed2d72d4ea35.yaml",
+   "sha256": "068f8ce60413c2f4db411059e1d2d34521730a0977771cd40c5dc87c5ebfb875"
+  },
+  "meter": {
+   "file": "42bcf12f6663b19b5eaa517f050b6cbf286037eed3c569a5ccae6724c19de64e.yaml",
+   "sha256": "eab98110b9ba4df7cce50a8d2c08bd9df318e04949441fbab9a8e49cbc2a4c4c"
+  }
+ },
+ "note": "Original YAML kept unchanged for provenance. read-map-extract.json holds reads only."
+}

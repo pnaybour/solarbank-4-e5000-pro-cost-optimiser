@@ -1,0 +1,77 @@
+{% extends "base.html" %}{% block content %}
+<section class="home-card hero" id="home-hero" aria-label="Battery now">
+ <div class="hero-top">
+  <div class="ring" aria-hidden="true"><svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="50"/><circle class="ring-fill" id="home-ring" cx="60" cy="60" r="50" pathLength="100" stroke-dasharray="0 100"/></svg><b id="home-soc">—</b></div>
+  <div class="hero-text"><strong id="home-state">Checking…</strong><span id="home-power"></span><span id="home-min"></span></div>
+ </div>
+ <div class="chips">
+  <div class="chip"><span>Solar</span><b id="home-solar">—</b></div>
+  <div class="chip"><span id="home-grid-label">Grid</span><b id="home-grid">—</b></div>
+  <div class="chip"><span>Car</span><b id="home-car">—</b></div>
+ </div>
+</section>
+<a class="home-card mode-line" id="home-mode-link" href="/settings#realtime"><span id="home-mode">Checking…</span><span class="chev" aria-hidden="true">›</span></a>
+<section class="home-card home-modes" aria-label="Household">
+ <span class="label">Household</span>
+ <div class="mode-buttons" role="group" aria-label="Household demand">
+  <button type="button" class="mode-btn" data-mode="Away from home" data-desc="Nobody home: plan for the base load below only" aria-pressed="false">Away</button>
+  <button type="button" class="mode-btn" data-mode="Normal consumption" data-desc="A typical day, learned from the house" aria-pressed="false">Normal</button>
+  <button type="button" class="mode-btn" data-mode="High demand" data-desc="Visitors or extra use: a full charge overnight" aria-pressed="false">High</button>
+ </div>
+ <p id="household-note" class="small" role="status" aria-live="polite"></p>
+ <p id="household-schedule" class="small"></p>
+ <label for="away" class="away-label">Away base load (W)</label><input id="away" class="away-input" type="number" min="0" max="25000" step="any" inputmode="decimal" placeholder="For example 350">
+ <a class="small" href="/#plan-ahead">Plan a visit or time away ›</a>
+</section>
+<section class="home-card" id="home-tonight" aria-label="Tonight">
+ <span class="label" id="home-tonight-label">Tonight</span>
+ <strong class="big" id="home-tonight-main">Checking…</strong>
+ <span class="small" id="home-tonight-detail"></span>
+</section>
+<section class="home-card money" id="home-money" aria-label="Savings (estimates)">
+ <div class="row"><span id="home-saving-label">Yesterday's saving</span><strong class="gold" id="home-saving">—</strong></div>
+ <div class="three"><div><span>Last 7 days</span><b id="home-week">—</b></div><div><span>Since going live</span><b id="home-live">—</b></div><div><span>Battery used today</span><b id="home-used">—</b></div></div>
+ <span class="small">Estimates against a home with no solar or battery, not a bill.</span>
+</section>
+<section class="home-card" id="home-day" aria-label="The day's chart">
+ <div class="metric-row" role="group" aria-label="What the chart shows">
+  <button type="button" class="metric" data-metric="solar_kw" aria-pressed="false" title="Solar"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg><span>Solar</span></button>
+  <button type="button" class="metric" data-metric="house_kw" aria-pressed="false" title="House"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z"/><path d="M13 11l-3 4h4l-3 4"/></svg><span>House</span></button>
+  <button type="button" class="metric" data-metric="battery_kw" aria-pressed="true" title="Battery"><svg viewBox="0 0 24 24"><rect x="7" y="4" width="10" height="17" rx="2"/><path d="M10 2h4M10 9h4M10 13h4M10 17h4"/></svg><span>Battery</span></button>
+  <button type="button" class="metric" data-metric="grid_kw" aria-pressed="false" title="Grid"><svg viewBox="0 0 24 24"><path d="M12 2 7 22M12 2l5 20M8 16h8M9 11h6M5 7h14"/></svg><span>Grid</span></button>
+ </div>
+ <span class="label" id="home-day-title">Battery</span>
+ <strong class="big" id="home-day-total">—</strong>
+ <svg id="home-chart" class="day-chart" viewBox="0 0 340 190" role="img" aria-label="Power through the day"></svg>
+ <p class="small" id="home-chart-read">Tap the chart to read a value.</p>
+ <p class="small" id="home-chart-key"></p>
+ <span class="label">Battery level</span>
+ <svg id="home-soc-chart" class="day-chart" viewBox="0 0 340 110" role="img" aria-label="Battery level through the day"></svg>
+ <p class="small" id="home-soc-key"></p>
+ <div class="date-row"><button type="button" class="round" id="home-prev" aria-label="Previous day">‹</button><span id="home-date">Today</span><button type="button" class="round" id="home-next" aria-label="Next day">›</button></div>
+ <p class="small">Green bands: cheap rate. Battery: above the line it powers the house, below the line it charges.</p>
+</section>
+<div id="more" class="legacy-pages">
+<section class="panel" id="forecast"><div class="panel-heading"><h2>Next 48 hours</h2><span class="muted-tag">Forecast</span></div><div class="forecast-values"><div><span>Expected household use</span><strong id="forecast-demand">Unavailable</strong></div><div><span>Available solar</span><strong id="forecast-solar">Unavailable</strong></div></div>
+<p id="forecast-reason" class="fine">Checking forecast…</p><p id="normal-reference" class="fine"></p></section>
+ <section class="panel" id="household"><div class="panel-heading"><h2>Household</h2><span class="muted-tag">Tap to set · applies from now</span></div>
+  <p id="active-demand" class="household-mode">Normal consumption</p>
+  <p id="household-policy" class="fine">Away plans for your base load only. Normal uses a typical day. High asks for a full overnight charge. Anker settings and the 45 A protections still take priority.</p>
+  <details id="plan-ahead"><summary>Plan a visit or time away</summary>
+   <div class="pair"><div><label for="plan-mode">Plan</label><select id="plan-mode"><option value="Away from home">Away (nobody home)</option><option value="High demand">High (visitors or extra use)</option></select></div>
+   <div><label for="plan-from">From (London time; blank means now)</label><input id="plan-from" type="datetime-local"></div></div>
+   <label for="plan-until">Until, or the day you return (London time)</label><input id="plan-until" type="datetime-local">
+   <div class="actions"><button type="button" class="secondary" id="plan-save">Save plan</button></div>
+   <p class="fine">This replaces the current household choice; outside the planned dates the house is treated as Normal. For Away, enter the base load above.</p></details>
+  <hr><p id="slot-status" class="fine">No verified extra cheap slots.</p><a class="text-link" href="#control">Control and Anker app ↓</a></section>
+
+<section class="panel" id="automation"><h2>Automation</h2><p id="automation-state">Automatic: the planner chooses the charge level.</p>
+<div class="actions"><button type="button" class="secondary" id="pause">Pause automation</button><button type="button" class="secondary" id="resume">Return to automatic</button></div>
+<label for="pause-until">Pause until (London time; blank means until you resume)</label><input id="pause-until" type="datetime-local">
+<hr><label for="override-target">Override the charge level (%)</label><input id="override-target" type="number" min="5" max="100" step="1" inputmode="numeric" placeholder="For example 80">
+<label for="override-until">Hold it until (London time)</label><input id="override-until" type="datetime-local">
+<div class="actions"><button type="button" class="secondary" id="override-set">Set override</button></div>
+<p class="fine">Pause: the optimiser asks for no charging, so the Anker runs as normal; the advice is still worked out and shown. Override: the planner may use only your level for every cheap window until the end time (never below the minimum battery level). <span class="live-only">The controller acts on both; </span><span class="shadow-only">Neither sends commands while the controller is in shadow mode; </span>the 45 A and car-charging protections are never paused.</p></section>
+<section class="panel" id="control"><h2>Control and Anker app</h2><p id="control-reason">Observe mode. No equipment writes.</p><div class="actions"><button id="observe" class="secondary">Observe only</button><button id="shadow" class="secondary">Shadow mode</button><button id="handover" class="secondary">Request handover to Anker app</button></div><p class="fine"><span class="live-only">Observe and Shadow both leave the optimiser in charge; whether it sends commands (live) is set on the Pi, not here. A handover request makes the controller cancel its commands, release the battery and leave it to the Anker app until you choose Observe or Shadow again.</span><span class="shadow-only">A handover request cannot confirm that Anker has regained control until release and readback have been tested. Automatic control is unavailable. The optimiser's current limiting and EV protection are not active.</span></p></section>
+</div>
+{% endblock %}

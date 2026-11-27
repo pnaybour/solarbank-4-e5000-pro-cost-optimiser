@@ -1,0 +1,14 @@
+[Unit]
+Description=Solarbank storage guard (alerts only; it never stops anything)
+[Service]
+Type=oneshot
+User=solarbank-optimiser
+Group=solarbank-optimiser
+WorkingDirectory=/var/lib/solarbank-cost-optimiser
+ExecStart=/usr/bin/python3 /opt/solarbank-cost-optimiser/current/scripts/pi-storage-guard.py
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/solarbank-cost-optimiser /run/solarbank-cost-optimiser
+UMask=0077

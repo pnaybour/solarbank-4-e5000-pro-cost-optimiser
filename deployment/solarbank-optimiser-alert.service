@@ -1,0 +1,24 @@
+[Unit]
+Description=Solarbank optimiser alert check and email (the only unit that talks to the mail service)
+After=network-online.target time-sync.target
+
+[Service]
+Type=oneshot
+User=solarbank-optimiser
+Group=solarbank-optimiser
+WorkingDirectory=/var/lib/solarbank-cost-optimiser
+ExecStart=/opt/solarbank-cost-optimiser/current/.venv/bin/solarbank --database /var/lib/solarbank-cost-optimiser/controller.sqlite3 alert --run
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/solarbank-cost-optimiser /run/solarbank-cost-optimiser
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+Environment=PYTHONPATH=/opt/solarbank-cost-optimiser/current/app
+Environment=PYTHONDONTWRITEBYTECODE=1
+TimeoutStartSec=90

@@ -1,0 +1,86 @@
+/* The Anker-style look (owner, 19 November 2026): a soft grey background, white rounded cards, few words, a bottom tab bar on phones.
+   Loaded after dashboard.css and history.css, so it restyles the existing pages without changing their structure. */
+:root{--app-bg:#eef1f4;--app-card:#fff;--app-ink:#16211c;--app-muted:#6b7a72;--app-line:#e6eaee;--app-green:#2f9e6a;--app-green-soft:#d9f2e5;--app-gold:#c98200;
+ --app-cheap:#e3f4ea;color:var(--app-ink);background:var(--app-bg)}
+body{background:var(--app-bg)}
+header{background:var(--app-bg);border-bottom:0}
+main{max-width:760px;margin:0 auto}
+.panel,.cards article,.overview-grid article,.notice{border-radius:20px;border:0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.intro h1{letter-spacing:-.02em}
+
+/* ---- the home page's new top --------------------------------------------------------------------------------------------------------------------------- */
+.home-card{display:block;background:var(--app-card);border-radius:24px;padding:18px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,.04);color:var(--app-ink);text-decoration:none}
+.hero-top{display:grid;grid-template-columns:118px 1fr;gap:16px;align-items:center}
+.ring{position:relative;width:118px;height:118px}.ring svg{width:118px;height:118px;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:12}.ring-track{stroke:#edf1ee}.ring-fill{stroke:var(--app-green);stroke-linecap:round;transition:stroke-dasharray .6s}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;letter-spacing:-.02em}
+.hero-text{display:grid;gap:3px;color:var(--app-muted);font-size:15px}.hero-text strong{font-size:22px;color:var(--app-ink);line-height:1.2}
+.chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.chip{background:#f5f7f9;border-radius:16px;padding:10px 12px;font-size:12px;color:var(--app-muted)}.chip b{display:block;font-size:17px;color:var(--app-ink);margin-top:2px}
+.mode-line{display:flex;justify-content:space-between;align-items:center;gap:10px;border-radius:40px;padding:15px 20px;font-weight:600}
+.chev{color:#a8b3ad;font-size:22px;line-height:1}
+.home-card .label{display:block;font-size:13px;color:var(--app-muted)}
+.home-card .big{display:block;font-size:20px;margin:3px 0;line-height:1.25}
+.home-card .small{display:block;font-size:13px;color:var(--app-muted);line-height:1.4}
+.money .row{display:flex;justify-content:space-between;align-items:center;gap:10px}.money .gold{color:var(--app-gold);font-size:22px}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;border-top:1px solid var(--app-line);margin:12px 0 10px;padding-top:12px}
+.three span{font-size:12px;color:var(--app-muted)}.three b{display:block;font-size:18px;margin-top:4px}
+.metric-row{display:flex;gap:8px;justify-content:space-between;margin-bottom:12px}
+.metric{flex:1;display:grid;justify-items:center;gap:3px;background:#f1f3f6;border:0;border-radius:14px;padding:8px 0;margin:0;color:var(--app-muted);font-size:12px;min-height:0}
+.metric svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.metric[aria-pressed=true]{background:var(--app-green-soft);color:#1f5a35;font-weight:600}
+.day-chart{width:100%;height:auto;display:block;margin:8px 0 4px;touch-action:pan-y}
+.day-chart text{font-size:10px;fill:#8a968f}.day-chart text.hint{font-size:10px;fill:#a3aea8}
+.day-chart .cheap-band{fill:var(--app-cheap)}.day-chart .axis{stroke:#cfd8d3}.day-chart .grid-line{stroke:#edf0ee}.day-chart .cursor{stroke:var(--app-green);stroke-dasharray:3 3}
+.date-row{display:flex;justify-content:space-between;align-items:center;color:var(--app-muted);font-size:14px;margin:8px 0 6px}
+.round{width:36px;height:36px;min-height:0;border-radius:50%;background:#f1f3f6;color:var(--app-ink);border:0;margin:0;padding:0;font-size:20px}
+.round:disabled{opacity:.35}
+.legacy-pages>section{display:none}.legacy-pages>section.shown{display:block}
+body.legacy-open .home-card{display:none}
+.legacy-pages .back{display:inline-block;margin:0 0 10px;color:var(--app-ink);text-decoration:none;font-size:15px;font-weight:600}
+
+/* ---- phones: a bottom tab bar instead of the links at the top --------------------------------------------------------------------------------------------- */
+@media(max-width:700px){
+ body{padding-bottom:84px}
+ header{padding:14px 16px 4px}.brand span{display:none}
+ header nav{position:fixed;left:0;right:0;bottom:0;z-index:10;background:#fff;border-top:1px solid var(--app-line);display:flex;justify-content:space-around;padding:8px 0 calc(10px + env(safe-area-inset-bottom))}
+ header nav a{flex:1;text-align:center;font-size:12px;padding:6px 0;border-radius:0;background:none}
+ header nav a[aria-current=page]{color:var(--app-ink);font-weight:700;background:none}
+ header nav a::before{display:block;font-size:20px;line-height:1.1;margin-bottom:2px}
+header nav a[href="/"]::before{content:"⌂"}header nav a[href="/history"]::before{content:"▥"}header nav a[href="/settings"]::before{content:"⚙"}
+ main{padding:4px 16px 24px}
+ body.page-dashboard .intro>div:first-child,#mode,.intro .eyebrow,.intro h1+p{display:none}
+ .intro{display:block;margin:0 0 4px;padding:0}.intro h1{font-size:26px;margin:4px 0 6px}
+ .intro .badges{position:absolute;top:10px;right:16px}
+}
+
+/* ---- Settings as a menu of grouped rows, one screen at a time (the Anker app's "Home Setup") -------------------------------------------------------------- */
+.settings-menu-on .settings-layout{display:block}
+.settings-menu .menu-title{font-size:14px;color:var(--app-muted);margin:18px 6px 6px}
+.menu-group{background:var(--app-card);border-radius:22px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.menu-group a{display:flex;align-items:center;gap:10px;padding:17px 18px;color:var(--app-ink);text-decoration:none;font-size:16px;font-weight:500}
+.menu-group a+a{border-top:1px solid var(--app-line);margin-left:18px;padding-left:0}
+.menu-group a span{flex:1}.menu-group a em{font-style:normal;color:#9aa6a0;font-size:14px}.menu-group a i{font-style:normal;color:#b3bdb8;font-size:22px;line-height:1}
+.settings-menu-on .settings-pages>section{display:none}
+.settings-menu-on.setting-open .settings-pages>section.open{display:block}
+.settings-menu-on.setting-open .settings-menu,.settings-menu-on.setting-open .intro{display:none}
+.settings-pages .back{display:inline-block;margin:0 0 10px;color:var(--app-ink);text-decoration:none;font-size:15px;font-weight:600}
+.settings-pages section h2{font-size:24px}
+.settings-pages section>p:not(.fine){color:var(--app-muted)}
+
+/* ---- Household mode on the home page, as the Anker app's "Modes" list: one row each, a description and a tick circle ----------------------------------- */
+.home-modes .mode-buttons{display:block;margin:8px 0 4px;background:#f7f9fa;border-radius:18px;overflow:hidden}
+.home-modes .mode-btn{display:grid;grid-template-columns:1fr 26px;grid-template-areas:"word tick" "desc tick";text-align:left;width:100%;min-height:0;margin:0;padding:14px 16px;
+ background:none;border:0;border-radius:0;color:var(--app-ink);font-size:17px;font-weight:600}
+.home-modes .mode-btn+.mode-btn{border-top:1px solid var(--app-line)}
+.home-modes .mode-btn::after{grid-area:desc;content:attr(data-desc);font-size:13px;font-weight:400;color:var(--app-muted);margin-top:2px}
+.home-modes .mode-btn::before{grid-area:tick;align-self:center;justify-self:end;content:"";width:22px;height:22px;border-radius:50%;border:1.5px solid #c9d2cd;box-sizing:border-box}
+.home-modes .mode-btn[aria-pressed=true]{background:none;color:var(--app-ink)}
+.home-modes .mode-btn[aria-pressed=true]::before{content:"✓";border:0;background:var(--app-green);color:#fff;font-size:14px;font-weight:700;display:grid;place-items:center;line-height:22px;text-align:center}
+.home-modes .away-label{display:block;font-size:13px;color:var(--app-muted);margin:10px 0 4px}.home-modes .away-input{max-width:220px}
+.home-modes a.small{color:var(--app-green);text-decoration:none;margin-top:8px}
+.day-chart .forecast-line{fill:none;stroke:#b98a00;stroke-width:1.6;stroke-dasharray:5 4}
+.day-chart .corrected-line{fill:none;stroke:#7a5c00;stroke-width:1.6;stroke-dasharray:1.5 3;stroke-linecap:round}
+.day-chart .plan-line{fill:none;stroke:#7a8a82;stroke-width:1.6;stroke-dasharray:5 4}
+.day-chart .plan-latest{fill:none;stroke:#5b7cfa;stroke-width:1.6;stroke-dasharray:1.5 3;stroke-linecap:round}
+#household-note:empty{display:none}#household-note{color:var(--app-ink);font-weight:600}#household-note.error{color:#973f2c}

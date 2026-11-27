@@ -1,0 +1,41 @@
+[Unit]
+Description=Solarbank optimiser collector (reads the devices; never writes to them)
+After=network-online.target time-sync.target
+Wants=network-online.target time-sync.target
+StartLimitIntervalSec=0
+OnFailure=solarbank-optimiser-alert@%n.service
+
+[Service]
+Type=simple
+User=solarbank-optimiser
+Group=solarbank-optimiser
+WorkingDirectory=/var/lib/solarbank-cost-optimiser
+ExecStart=/opt/solarbank-cost-optimiser/current/.venv/bin/solarbank --database /var/lib/solarbank-cost-optimiser/controller.sqlite3 collect --continuous --source direct --meter-feed /run/solarbank-cost-optimiser/meter.json --settings-log /var/lib/solarbank-cost-optimiser/device-settings.jsonl --telemetry-dir /var/lib/solarbank-cost-optimiser/telemetry
+Restart=on-failure
+RestartSec=30
+TimeoutStopSec=90
+UMask=0077
+RuntimeDirectory=solarbank-cost-optimiser
+RuntimeDirectoryPreserve=yes
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/solarbank-cost-optimiser
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+Environment=PYTHONPATH=/opt/solarbank-cost-optimiser/current/app
+Environment=OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 PYTHONDONTWRITEBYTECODE=1
+MemoryAccounting=true
+MemoryHigh=192M
+MemoryMax=256M
+CPUQuota=50%
+TasksMax=32
+IPAddressDeny=any
+IPAddressAllow=localhost 192.168.0.0/16
+
+[Install]
+WantedBy=multi-user.target

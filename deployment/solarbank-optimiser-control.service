@@ -1,0 +1,44 @@
+[Unit]
+Description=Solarbank optimiser controller (decides every second; sends commands to the battery only in live mode, set in the control-mode file)
+After=network-online.target time-sync.target
+Wants=network-online.target time-sync.target
+StartLimitIntervalSec=0
+OnFailure=solarbank-optimiser-alert@%n.service
+
+[Service]
+Type=notify
+NotifyAccess=main
+User=solarbank-optimiser
+Group=solarbank-optimiser
+WorkingDirectory=/run/solarbank-cost-optimiser
+ExecStart=/opt/solarbank-cost-optimiser/current/.venv/bin/python -m solarbank_optimiser.control_loop --devices solarbank,shelly,meter --meter-after-cutover --meter-feed /run/solarbank-cost-optimiser/meter.json --dispatch-feed /run/solarbank-cost-optimiser/tariff.json --slot-allowance /var/lib/solarbank-cost-optimiser/smart-slot-allowance.json --out /run/solarbank-cost-optimiser/control-loop.json --plan /run/solarbank-cost-optimiser/plan.json --lock /run/solarbank-cost-optimiser/control-loop.lock --mode-file /etc/solarbank-cost-optimiser/control-mode --log /var/lib/solarbank-cost-optimiser/control-commands.jsonl
+WatchdogSec=10
+Restart=on-failure
+RestartPreventExitStatus=2 3 4
+RestartSec=5
+TimeoutStopSec=15
+RuntimeDirectory=solarbank-cost-optimiser
+RuntimeDirectoryPreserve=yes
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/solarbank-cost-optimiser
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET
+Environment=PYTHONPATH=/opt/solarbank-cost-optimiser/current/app
+Environment=PYTHONDONTWRITEBYTECODE=1
+MemoryAccounting=true
+MemoryHigh=64M
+MemoryMax=96M
+CPUQuota=20%
+TasksMax=16
+IPAddressDeny=any
+IPAddressAllow=192.168.0.0/16
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,5 @@
+generation=2
+This file marks a release that changed where the data lives, and so the oldest release that can still read it.
+Generation 1 (WP23b) moved the minute history into the telemetry files. Generation 2 (5 November) stopped the collector writing readings to the database at all:
+the dashboard's and the planner's "last known reading" come from the live file and the telemetry files.
+Activating a release that carries a newer generation than the one recorded records its id as the oldest release switch-release.sh will accept (RC1).

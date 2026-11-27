@@ -1,0 +1,8 @@
+[Unit]
+Description=Nightly Solarbank off-site backup (outside the cheap window)
+[Timer]
+OnCalendar=*-*-* 12:40:00 Europe/London
+RandomizedDelaySec=10min
+Persistent=true
+[Install]
+WantedBy=timers.target

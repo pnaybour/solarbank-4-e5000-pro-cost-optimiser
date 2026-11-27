@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solarbank · {{ title }}</title><link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/static/dashboard.css"><link rel="stylesheet" href="/static/history.css">
+<script defer src="/static/common.js"></script><script defer src="/static/{{ script }}"></script>{% if page == "dashboard" %}<script defer src="/static/home.js"></script>{% endif %}{% if page == "settings" %}<script defer src="/static/diagnostics.js"></script><script defer src="/static/settings-menu.js"></script>{% endif %}<link rel="stylesheet" href="/static/app.css"></head>
+<body class="page-{{ page }}"><header><a class="brand" href="/">SOLARBANK<span>Home energy</span></a>
+<nav aria-label="Main navigation">{% for href,label,key in [('/', 'Home','dashboard'),('/history','History','history'),('/settings','Settings','settings')] %}<a href="{{ href }}" {% if page == key %}aria-current="page"{% endif %}>{{ label }}</a>{% endfor %}</nav></header>
+<main><div class="intro"><div><p class="eyebrow">{{ eyebrow }}</p><h1>{{ title }}</h1><p>{{ subtitle }}</p></div><div class="badges"><a class="rt-pill rt-unknown" id="rt-pill" href="/settings#realtime" title="Is the real-time back end running safely?"><span class="rt-icon" aria-hidden="true">●</span><span id="rt-text">Real-time: checking…</span></a><span class="badge" id="mode">Observe only</span></div></div>
+{% if display_notice %}<section class="notice"><strong>{{ display_notice }}</strong></section>{% endif %}
+<p id="message" role="status" aria-live="polite"></p>{% block content %}{% endblock %}
+<footer>Solarbank {{ version }} · Local application</footer></main></body></html>

@@ -1,0 +1,24 @@
+.venv/
+build/
+__pycache__/
+.pytest_cache/
+*.sqlite3*
+.env
+*.pem
+*.key
+pi-test-results.xml
+*.egg-info/
+.hypothesis/
+.ruff_cache/
+install-answers.md
+# Local runtime data and credentials: never commit any of these
+runtime/
+.env.*
+!.env.example
+dashboard-password
+resend-key
+octopus-api-key
+alert.json
+healthchecks.json
+rclone.conf
+.solarbank-deploy-token

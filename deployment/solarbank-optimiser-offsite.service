@@ -1,0 +1,21 @@
+[Unit]
+Description=Solarbank verified off-site backup (database and telemetry files to Google Drive)
+After=network-online.target time-sync.target
+Wants=network-online.target time-sync.target
+OnFailure=solarbank-optimiser-alert@%n.service
+[Service]
+Type=oneshot
+User=solarbank-optimiser
+Group=solarbank-optimiser
+WorkingDirectory=/var/lib/solarbank-cost-optimiser
+Environment=RCLONE_CONFIG=/var/lib/solarbank-cost-optimiser/rclone.conf
+ExecStart=/opt/solarbank-cost-optimiser/current/.venv/bin/solarbank --database /var/lib/solarbank-cost-optimiser/controller.sqlite3 offsite-backup
+TimeoutStartSec=2h
+Nice=10
+IOSchedulingClass=idle
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+ReadWritePaths=/var/lib/solarbank-cost-optimiser
+UMask=0077

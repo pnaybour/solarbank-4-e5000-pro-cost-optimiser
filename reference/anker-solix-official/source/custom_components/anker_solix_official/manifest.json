@@ -1,0 +1,21 @@
+{
+  "domain": "anker_solix_official",
+  "name": "Anker SOLIX Official",
+  "after_dependencies": [],
+  "codeowners": [
+    "@anker-charging"
+  ],
+  "config_flow": true,
+  "dependencies": [
+    "zeroconf"
+  ],
+  "documentation": "https://github.com/anker-charging/ha-anker-solix-official",
+  "integration_type": "hub",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/anker-charging/ha-anker-solix-official/issues",
+  "loggers": ["custom_components.anker_solix_official", "pymodbus"],
+  "requirements": [
+    "pymodbus>=3.10.0,<4.0.0"
+  ],
+  "version": "1.5.0"
+}

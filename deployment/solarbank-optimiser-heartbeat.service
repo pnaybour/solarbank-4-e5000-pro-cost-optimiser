@@ -1,0 +1,24 @@
+[Unit]
+Description=Solarbank independent heartbeat: tells an outside service the Pi and the optimiser are alive (read-only)
+After=network-online.target time-sync.target
+
+[Service]
+Type=oneshot
+User=solarbank-optimiser
+Group=solarbank-optimiser
+WorkingDirectory=/var/lib/solarbank-cost-optimiser
+ExecStart=/opt/solarbank-cost-optimiser/current/.venv/bin/solarbank --database /var/lib/solarbank-cost-optimiser/controller.sqlite3 heartbeat
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ReadOnlyPaths=/var/lib/solarbank-cost-optimiser /run/solarbank-cost-optimiser /etc/solarbank-cost-optimiser
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+Environment=PYTHONPATH=/opt/solarbank-cost-optimiser/current/app
+Environment=PYTHONDONTWRITEBYTECODE=1
+TimeoutStartSec=60

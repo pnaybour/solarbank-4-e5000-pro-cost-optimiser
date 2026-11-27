@@ -1,0 +1,23 @@
+[Unit]
+Description=Solarbank optimiser alert for a failed unit (%i)
+
+[Service]
+Type=oneshot
+User=solarbank-optimiser
+Group=solarbank-optimiser
+WorkingDirectory=/var/lib/solarbank-cost-optimiser
+ExecStart=/opt/solarbank-cost-optimiser/current/.venv/bin/solarbank --database /var/lib/solarbank-cost-optimiser/controller.sqlite3 alert --unit-failed %i
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/solarbank-cost-optimiser /run/solarbank-cost-optimiser
+ProtectKernelTunables=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+Environment=PYTHONPATH=/opt/solarbank-cost-optimiser/current/app
+Environment=PYTHONDONTWRITEBYTECODE=1
+TimeoutStartSec=60

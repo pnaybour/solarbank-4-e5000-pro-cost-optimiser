@@ -1,0 +1,32 @@
+{
+  "provenance": "Three real polls copied from the energy monitor's recorder on the Pi, 26 October 2026 (one per source). Values only: no serials, MACs or addresses. 'expected' was worked out by hand from the vendor register map, not produced by the decoder under test.",
+  "solarbank": [
+    {
+      "raw": {
+        "10000": [0,2,0,60,0,0,0,380,0,320,0,380,0,0,71,100,0,0,0,986,0,0,0,1795,0,0,0,3358,0,0,0,84,0,0,0,464,0,2500,0,2500],
+        "10208": [0,380],
+        "10250": [0,100],
+        "10262": [0,1795,0,1734]
+      },
+      "expected": {
+        "soc": 71, "status_code": 2, "status": "Discharging",
+        "pv": 60, "pv_direct": 60, "pv_external": 0,
+        "battery": 320, "load": 380, "grid": 0, "ac_output": 380,
+        "pv_total_kwh": 98.6, "charge_total_kwh": 179.5, "discharge_total_kwh": 173.4, "rated_kwh": 10.0,
+        "max_charge": 2500, "max_discharge": 2500
+      }
+    }
+  ],
+  "shelly": [
+    {
+      "raw": {
+        "em1:0": {"act_power": 363.1, "aprt_power": 368.6, "calibration": "factory", "current": 1.557, "freq": 50.0, "id": 0, "pf": 0.98, "voltage": 235.6},
+        "em1:1": {"act_power": 3.1, "aprt_power": 7.1, "calibration": "factory", "current": 0.03, "freq": 50.0, "id": 1, "pf": 0.48, "voltage": 235.6}
+      },
+      "expected": {"ch1": 363.1, "ch1_voltage": 235.6, "ch1_current": 1.557, "ch2": 3.1, "ch2_voltage": 235.6, "ch2_current": 0.03}
+    }
+  ],
+  "meter": [
+    {"raw": {"main_w": 10, "sub_w": -324}, "note": "The monitor stores decoded watts only; registers are rebuilt from them (INT32, high word first)."}
+  ]
+}
