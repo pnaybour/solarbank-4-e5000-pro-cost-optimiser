@@ -695,13 +695,14 @@ The first deploy of this release creates the file from the addresses that were i
 
 ## Commissioning and going live: one status flag (RC4)
 
-The sending transport is part of every release, but it cannot send until all three root-owned conditions hold. The code you commission is the code that goes live, so going live changes files, never code.
+The sending transport is part of every release, but it cannot send until both root-owned conditions hold. The code you commission is the code that goes live, so going live changes files, never code.
 
 | Condition | Where | Default |
 | --- | --- | --- |
 | The status flag: the word `live` | `/etc/solarbank-cost-optimiser/control-mode` | `shadow` |
-| A commissioning record for this exact controller code with every test of that write class's stage passed (GitHub issue 76) | `/etc/solarbank-cost-optimiser/commissioning.json` | none |
 | The write classes allowed (`mode`, then `setpoint`) | `/etc/solarbank-cost-optimiser/write-switch` | empty |
+
+The commissioning record (`/etc/solarbank-cost-optimiser/commissioning.json`, written by `commission pass`) used to be a third condition. Since 12 November 2026 it is the owner's notebook and no longer blocks writes (`COMMISSIONING_PLAN.md`, and the docstring of `live_gate.py`).
 
 With the flag at `live` and a condition missing, the controller runs in `logged` mode (journals what it would write, sends nothing) and its start-up line says which condition is missing. Check at any time:
 

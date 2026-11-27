@@ -112,7 +112,7 @@ Ask which of these the owner wants, say what each is for, and **do not collect a
 
 | What | Needed? | Why | How to get it | Where it goes |
 |---|---|---|---|---|
-| **Octopus API key** | Only for Intelligent Octopus Go. Without it, use the fixed cheap window. | The planner reads your prices, your cheap window and the smart-charging slots (read only). | Octopus account, Personal details, **API access** (the key starts `sk_live_`). Your account number is on the same page. You do not need the charger's device ID: after you connect, the Settings page lists your linked chargers. | `OCTOPUS_API_KEY=` in `/var/lib/solarbank-cost-optimiser/.env` (mode 600), typed by the owner over SSH: `sudo -u solarbank-optimiser nano /var/lib/solarbank-cost-optimiser/.env`. The website refuses a new key over the home network's plain HTTP. Then use "Connect Octopus (read only)" on the Settings page. |
+| **Octopus API key** | Only for Intelligent Octopus Go. Without it, use the fixed cheap window. | The planner reads your prices, your cheap window and the smart-charging slots (read only). | Octopus account, Personal details, **API access** (the key starts `sk_live_`). Your account number is on the same page. You do not need the charger's device ID: after you connect, the Settings page lists your linked chargers. | `OCTOPUS_API_KEY=` in `/var/lib/solarbank-cost-optimiser/.env` (mode 600), typed by the owner over SSH: `sudo -u solarbank-optimiser nano /var/lib/solarbank-cost-optimiser/.env`, then `sudo chmod 600 /var/lib/solarbank-cost-optimiser/.env` (the software refuses a key file that other users can read). The website refuses a new key over the home network's plain HTTP. Then use "Connect Octopus (read only)" on the Settings page. |
 | **Resend API key**, and a sending domain you have verified | Optional but recommended. | Emails you if a service stops or the readings go stale. A stopped controller means a missed cheap charge. | resend.com: create an account, add and verify a domain you control, then create an API key with sending access. | `resend-key` and `alert.json` in the data folder (OPERATIONS.md, alerts). |
 | **Healthchecks.io** ping addresses | Optional but recommended. | A heartbeat from outside your house: it tells you if the whole Pi has gone quiet, which no email from the Pi itself can. | healthchecks.io: create an account and a check for each of the Pi, the optimiser and the backup. | `healthchecks.json` in the data folder (OPERATIONS.md, independent heartbeat). **The ping addresses are secrets.** |
 | **Cloudflare R2** (or another rclone remote) | Optional but recommended. | A daily copy of the database off the Pi, in case the SD card or SSD fails. | Cloudflare dashboard: create a bucket, then an R2 API token with Object Read and Write limited to that bucket. Note the access key, the secret and your account's endpoint address. Check Cloudflare's current pricing. | `rclone.conf` in the data folder (OPERATIONS.md, "Cloudflare R2 instead of Google Drive"). |
@@ -131,7 +131,7 @@ The alerts, backup and heartbeat timers stay off until their file exists, so the
 
 1. Read the documents and ask the questions in Part 2. **Stop** if the battery is not the E5000 Pro.
 2. **Owner:** make your own copy on GitHub: **Fork** for a public copy, or, to keep your changes private, GitHub's **Import repository** (github.com/new/import) with this project's address, as a private repository. A fork is public, so the changes Claude makes for your house (your town-level location, your panels, your home network range) would be visible. Clone your copy onto your computer.
-3. Make the changes the answers need, using the recipes in CUSTOMISING.md (location, solar panels, home network range, and battery size or garage limit if they differ). Each change comes with tests; run the whole suite on your computer; add a dated entry to `REQUIREMENTS_AMENDMENTS.md`. **Owner:** reviews and commits.
+3. Make the changes the answers need, using the recipes in CUSTOMISING.md (location, solar panels, home network range, and battery size or garage limit if they differ). Each change comes with tests; run the whole suite on your computer; add a dated entry to `REQUIREMENTS_AMENDMENTS.md`. **Owner:** reviews the changes; then Claude commits them and pushes them to your own copy on GitHub. Check that the commit appears on GitHub, and use its full commit id (40 characters) for the Pi: the Pi downloads from GitHub, not from your computer.
 4. **Owner:** the Anker app settings (question 4) and the router reservations (Part 1, step 9).
 5. Do the **first install** below. It replaces the first deploy, which cannot work on a new Pi.
 6. For every later update, use `scripts/deploy-on-pi.sh` with `SOLARBANK_REPO` set to your copy (README, Technical details, "Install"). Never skip its test gate. **Owner:** provides the GitHub token, typed on the Pi.
@@ -152,7 +152,13 @@ Run these on the Pi as the `pi` user. Replace `YOUR-GITHUB-NAME` and `COMMIT` (t
    sudo install -d -o pi -g pi /opt/solarbank-cost-optimiser/releases/$release
    curl --fail -L https://github.com/YOUR-GITHUB-NAME/solarbank-4-e5000-pro-cost-optimiser/archive/COMMIT.tar.gz | tar -xz --strip-components=1 -C /opt/solarbank-cost-optimiser/releases/$release
    ```
-   For a private copy, the owner types the GitHub token first (`read -rs GITHUB_TOKEN`), and the download uses the address and header that `deploy-on-pi.sh` uses: `curl --fail -L -H "Authorization: Bearer $GITHUB_TOKEN" https://api.github.com/repos/YOUR-GITHUB-NAME/solarbank-4-e5000-pro-cost-optimiser/tarball/COMMIT`. Keep the shell window open: `$release` is used in every step below.
+   For a private copy, use these three lines instead of the `curl` line above. The owner types the GitHub token at the first one; nothing shows while it is typed:
+   ```
+   read -rs GITHUB_TOKEN
+   curl --fail -L -H "Authorization: Bearer $GITHUB_TOKEN" https://api.github.com/repos/YOUR-GITHUB-NAME/solarbank-4-e5000-pro-cost-optimiser/tarball/COMMIT | tar -xz --strip-components=1 -C /opt/solarbank-cost-optimiser/releases/$release
+   unset GITHUB_TOKEN
+   ```
+   Keep the shell window open: `$release` is used in every step below.
 2. **Build the solver environment**, once (it takes a while):
    ```
    sudo sh /opt/solarbank-cost-optimiser/releases/$release/scripts/bootstrap-solver.sh /opt/solarbank-cost-optimiser/solver-venv

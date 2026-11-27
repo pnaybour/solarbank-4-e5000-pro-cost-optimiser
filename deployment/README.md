@@ -37,9 +37,11 @@ The owner requested ordinary HTTP, matching the other Pi applications, at
 redirect on this port. This removes the certificate warning page; browsers can
 still label HTTP as “Not secure” because LAN traffic is not encrypted. Login is
 disabled for this private installation, and source addresses are restricted to
-the home LAN, loopback and private Tailscale ranges. The old password file is
-retained privately as the CSRF signing seed; other installations still default
-to password access. Existing certificate files are retained only for rollback.
+the home LAN, loopback and private Tailscale ranges. The password file is
+kept privately as the CSRF signing seed. The supplied web service runs with
+`--trusted-network`, so every installation built from this repository starts
+without a login on the allowed networks; remove that option from
+`solarbank-optimiser-web.service` to require the password (user `solarbank`). Existing certificate files are retained only for rollback.
 
 Heimdall opens `http://solarbank-pi.local:8091/?access=local`. The query also gives
 browsers a fresh URL if they cached the previous permanent HTTPS redirect.
@@ -58,6 +60,7 @@ it, connect over SSH and edit the private file on the Pi:
 
 ```sh
 ssh -t solarbank-pi 'sudo -u solarbank-optimiser nano /var/lib/solarbank-cost-optimiser/.env'
+ssh solarbank-pi 'sudo chmod 600 /var/lib/solarbank-cost-optimiser/.env'
 ```
 
 Keep the line in the form `OCTOPUS_API_KEY=your-key`, preserve any other entries,
